@@ -45,8 +45,6 @@ namespace findaPhysio.Models
         public double _Latitude { get; set; }
 
         public double _Longitude { get; set; }
-     
-        public Geocoordinate _Geo { get;  set; }
         
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -113,15 +111,15 @@ namespace findaPhysio.Models
                 }
 
 
-                if (parseObject.ContainsKey("latitude"))
+                if (parseObject.ContainsKey("lat"))
                 {
-                    findaPhysioList._Latitude = (double)parseObject["latitude"];
+                    findaPhysioList._Latitude = (double)parseObject["lat"];
                 }
 
 
-                if (parseObject.ContainsKey("longitude"))
+                if (parseObject.ContainsKey("long"))
                 {
-                    findaPhysioList._Longitude = (double)parseObject["longitude"];
+                    findaPhysioList._Longitude = (double)parseObject["long"];
                 }
                 return findaPhysioList;
             });

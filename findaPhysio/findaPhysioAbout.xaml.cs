@@ -12,65 +12,25 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using findaPhysio.Models;
-using Coding4Fun.Toolkit.Controls;
+
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
-using findaPhysio.Dal;
+
 namespace findaPhysio
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class findaPhysioSearch : Page
+    public sealed partial class findaPhysioAbout : Page
     {
-
-        List<Clinics> _clinics = new List<Clinics>();
-
-        public findaPhysioSearch()
+        public findaPhysioAbout()
         {
             this.InitializeComponent();
-
-             MyMap.MapServiceToken = "AkaRVlcfNdzPJWi3QI3iQOr_mcDepgQZutsQn-rPDa8lpe-Bs-9yV5E9dHpOBDb9";
-            MyMap.SetView(new Windows.Devices.Geolocation.BasicGeoposition() { Latitude = 53.713442, Longitude = -1.0747807 },18);
-
             DrawerLayout.InitializeDrawerLayout(); //Intialize drawer  
-            string[] menuItems = new string[11] { "Home", "About Us", "Contact", "Search", "How FindaPhysio Works", "Physiotherapists", "Aritcle Of Week", "Blog Of Week", "Podcast Of Week", "Jobs", "Courses" }; ListMenuItems.ItemsSource = menuItems.ToList();  //Set Menu list  
-      
-
-
-            _clinics.Add(new Clinics() { _id = "1",_WebSite="www.Find-a-Physio.co.uk", _BookUrl = "http://www.find-a-physio.co.uk/Home/online-booking", _Name = "Physiotherapy at Home", _Latitude = 53.713442, _Longitude = -1.0747807, _Address1 = "The Cottage, Main St", _Town = "Selby", _Telephone = "07761 139883", _Speciaity = "Musculoskeletal", _Postcode = "YO8 8QT", _position = 1 });
-            _clinics.Add(new Clinics() { _id = "2", _WebSite = "www.Find-a-Physio.co.uk", _BookUrl = "http://www.find-a-physio.co.uk/Home/online-booking", _Name = "Bodyworx Physio", _Latitude = 53.785101, _Longitude = -1.0670279, _Address1 = "Watendlath", _Telephone = "07783 881082", _Postcode = "YO8 4PH", _Speciaity = "Musculoskeletal", _position = 2 });
-            _clinics.Add(new Clinics() { _id = "3", _WebSite = "www.Find-a-Physio.co.uk", _BookUrl = "http://www.find-a-physio.co.uk/Home/online-booking", _Name = "Rosemary Walmsley", _Latitude = 54.196454, _Longitude = -1.4338279, _Address1 = "80 York Rd", _Telephone = "01845 446410 ", _Postcode = "YO7 4SQ", _Speciaity = "Musculoskeletal", _position = 3 });
-
-             MyMap.AddPushpin(new Windows.Devices.Geolocation.BasicGeoposition() { Latitude = 53.713442, Longitude = -1.0747807 }, "1");
-             MyMap.AddPushpin(new Windows.Devices.Geolocation.BasicGeoposition() { Latitude = 53.785101, Longitude = -1.0670279 }, "2");
-              MyMap.AddPushpin(new Windows.Devices.Geolocation.BasicGeoposition() { Latitude = 54.196454, Longitude = -1.4338279 }, "3");
-
-
-           searchList.ItemsSource = _clinics;
-            
+            string[] menuItems = new string[11] { "Home", "About Us", "Contact", "Search", "How FindaPhysio Works", "Physiotherapists", "Aritcle Of Week", "Blog Of Week", "Podcast Of Week", "Jobs", "Courses" };
+            ListMenuItems.ItemsSource = menuItems.ToList();  //Set Menu list  
+     
         }
 
-
-        public async void populatelist()
-        {
-            try
-            {
-                findaPhysioDal _findaPhysioDal = new findaPhysioDal();
-
-
-                _clinics = await _findaPhysioDal.GetClinicsByPostCodeAndDistance("CM21 9ET");
-
-                searchList.ItemsSource = _clinics;
-                
-
-            }
-            catch (Exception ex)
-            {
-            }
-
-        }
-        /// <summary>
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
         /// </summary>
@@ -94,7 +54,7 @@ namespace findaPhysio
             {
                 //Get selected favorites item value  
                 var selecteditem = ListMenuItems.SelectedValue as string;
-               
+            
 
                 if (selecteditem == "Search")
                 {
@@ -173,50 +133,5 @@ namespace findaPhysio
             }
         } 
 
-
-        private void GoToLondonBtn_Clicked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-           
-        }
-
-        private void searchList_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            Clinics myItem = searchList.SelectedItem as Clinics;
-       
-   
-        }
-
-        private void btndetail_Click(object sender, RoutedEventArgs e)
-        {
-            Clinics myItem = searchList.SelectedItem as Clinics;
-
-
-            Frame.Navigate(typeof(findaPhysioSearchDetails),myItem);
-
-
-
-        }
-
-        private void btnNumber_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-            Clinics myItem = searchList.SelectedItem as Clinics;
-
-
-            MyMap.SetView(new Windows.Devices.Geolocation.BasicGeoposition() { Latitude = myItem._Latitude, Longitude = myItem._Longitude }, 11);
-      
-
-
-        }
-
-        private void txtViewDetails_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-            Clinics myItem = searchList.SelectedItem as Clinics;
-
-            Frame.Navigate(typeof(findaPhysioSearchDetails), myItem);
-        }
-
- 
     }
 }

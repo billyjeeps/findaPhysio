@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Email;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -13,25 +14,52 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace findaPhysio
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class findaPhysioContact : Page
     {
-        public MainPage()
+        public findaPhysioContact()
         {
             this.InitializeComponent();
 
-           
             DrawerLayout.InitializeDrawerLayout(); //Intialize drawer  
-            string[] menuItems = new string[11] { "Home", "About Us", "Contact", "Search", "How FindaPhysio Works", "Physiotherapists", "Aritcle Of Week", "Blog Of Week", "Podcast Of Week", "Jobs", "Courses" }; 
+            string[] menuItems = new string[11] { "Home","About Us", "Contact", "Search", "How FindaPhysio Works", "Physiotherapists", "Aritcle Of Week", "Blog Of Week", "Podcast Of Week", "Jobs", "Courses" };
             ListMenuItems.ItemsSource = menuItems.ToList();  //Set Menu list  
-            this.NavigationCacheMode = NavigationCacheMode.Required;  
+     
+        }
 
+        /// <summary>
+        /// Invoked when this page is about to be displayed in a Frame.
+        /// </summary>
+        /// <param name="e">Event data that describes how this page was reached.
+        /// This parameter is typically used to configure the page.</param>
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+        }
+
+        private async void txtemail2_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            EmailRecipient sendTo = new EmailRecipient()
+            {
+                Address = "fapapp@find-a-physio.co.uk"
+            };
+
+            //generate mail object
+            EmailMessage mail = new EmailMessage();
+            mail.Subject = "Feedback";
+
+            //add recipients to the mail object
+            mail.To.Add(sendTo);
+            //mail.Bcc.Add(sendTo);
+            //mail.CC.Add(sendTo);
+
+            //open the share contract with Mail only:
+            await EmailManager.ShowComposeNewEmailAsync(mail);
         }
 
         private void DrawerIcon_Tapped(object sender, TappedRoutedEventArgs e)
@@ -41,13 +69,14 @@ namespace findaPhysio
             else
                 DrawerLayout.OpenDrawer();//Open drawer  
         }
+
         private void ListMenuItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ListMenuItems.SelectedItem != null)
             {
                 //Get selected favorites item value  
                 var selecteditem = ListMenuItems.SelectedValue as string;
-
+               
 
                 if (selecteditem == "Search")
                 {
@@ -85,12 +114,12 @@ namespace findaPhysio
 
 
 
-                if (selecteditem == "Physiotherapists")
-                {
-                    DrawerLayout.CloseDrawer();
-                    Frame.Navigate(typeof(webView), "http://members.find-a-physio.co.uk/physiotherapists/");
+                    if (selecteditem == "Physiotherapists")
+                    {
+                        DrawerLayout.CloseDrawer();
+                        Frame.Navigate(typeof(webView), "http://members.find-a-physio.co.uk/physiotherapists/");
 
-                }
+                    }
 
                 if (selecteditem == "Aritcle Of Week")
                 {
@@ -124,21 +153,8 @@ namespace findaPhysio
                 }
                 ListMenuItems.SelectedItem = null;
             }
-        }
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            // TODO: Prepare page for display here.
+        } 
 
-            // TODO: If your application contains multiple pages, ensure that you are
-            // handling the hardware Back button by registering for the
-            // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
-            // If you are using the NavigationHelper provided by some templates,
-            // this event is handled for you.
-        }
+
     }
 }
