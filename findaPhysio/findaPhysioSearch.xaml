@@ -1,4 +1,4 @@
-﻿        <Page
+﻿<Page
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="using:findaPhysio"
@@ -10,33 +10,33 @@
         mc:Ignorable="d"
 
         Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Page.Resources>
+    <Page.Resources>
 
-  
+
         <DataTemplate x:Key="ImageTextListInboxTemplate">
-        <StackPanel Orientation="Horizontal" Width="470" Height="100">
-        <Border Height="40" Width="40" Margin="10,10,0,10" VerticalAlignment="Top">
-        <Image Source="/SampleImage.png" Stretch="UniformToFill"/>
-        </Border>
-        <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,10,0,0">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Grid Width="40" Height="40" HorizontalAlignment="Left">
-                <Ellipse x:Name="btnNumber" Fill="DodgerBlue"   StrokeThickness="3" Tapped="btnNumber_Tapped"/>
-                <TextBlock  Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding _position}"/>
-            </Grid>
-            <TextBlock Grid.Column="1" Text="{Binding _Address1}" 
+            <StackPanel Orientation="Horizontal" Width="470" Height="100">
+                <Border Height="40" Width="40" Margin="10,10,0,10" VerticalAlignment="Top">
+                    <Image Source="/SampleImage.png" Stretch="UniformToFill"/>
+                </Border>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,10,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid Width="40" Height="40" HorizontalAlignment="Left">
+                            <Ellipse x:Name="btnNumber" Fill="DodgerBlue"   StrokeThickness="3" Tapped="btnNumber_Tapped"/>
+                            <TextBlock  Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding _position}"/>
+                        </Grid>
+                        <TextBlock Grid.Column="1" Text="{Binding _Address1}" 
         Margin="10,2,0,0" Width="320" TextTrimming="WordEllipsis" TextWrapping="Wrap" 
         HorizontalAlignment="Left"/>
 
-            <TextBlock Grid.Column="1" Text="{Binding _Telephone}" 
+                        <TextBlock Grid.Column="1" Text="{Binding _Telephone}" 
         Margin="10,20,0,0" Width="320" TextTrimming="WordEllipsis" TextWrapping="Wrap" 
         HorizontalAlignment="Left"/>
 
-            <TextBlock Grid.Column="1" Text="{Binding _Speciaity}" 
+                        <TextBlock Grid.Column="1" Text="{Binding _Speciaity}" 
         Margin="10,30,0,0" Width="320" TextTrimming="WordEllipsis" TextWrapping="Wrap" 
         HorizontalAlignment="Left"/>
 
@@ -48,95 +48,95 @@
 
 
                     </Grid>
-        </StackPanel>
-        <TextBlock Text="00:00 AM" FontSize="9" Margin="20,0,0,0" VerticalAlignment="Center"/>
+                </StackPanel>
+                <TextBlock Text="00:00 AM" FontSize="9" Margin="20,0,0,0" VerticalAlignment="Center"/>
 
-               
-        </StackPanel>
+
+            </StackPanel>
         </DataTemplate>
-        </Page.Resources>
-        <Grid x:Name="RootLayout">
+    </Page.Resources>
+    <Grid x:Name="RootLayout">
         <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <!--Title bar -->
         <Grid x:Name="TitleBar" Background="#373A36"  Grid.Row ="0" Height="40">
-        <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="Auto" />
-        <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Image Margin="5"  x:Name="DrawerIcon"  Grid.Column="0" Source="/Assets/ic_drawer.png" HorizontalAlignment="Left" Tapped="DrawerIcon_Tapped" />
-        <TextBlock Grid.Column="1" Text="findaPhysio - Physio Search" Foreground="White" VerticalAlignment="Center" FontSize="18"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image Margin="5"  x:Name="DrawerIcon"  Grid.Column="0" Source="/Assets/ic_drawer.png" HorizontalAlignment="Left" Tapped="DrawerIcon_Tapped" />
+            <TextBlock Grid.Column="1" Text="findaPhysio - Physio Search" Foreground="White" VerticalAlignment="Center" FontSize="18"/>
         </Grid>
         <!--DrawerLayout bar -->
         <drawerLayout:DrawerLayout Grid.Row="1"  x:Name="DrawerLayout">
-        <!--MainPage -->
-        <Grid x:Name="MainFragment" Background="White">
-        <Image HorizontalAlignment="Left" Height="100" Margin="10,51,0,0" VerticalAlignment="Top" Width="100"/>
-        
-        <local:MapView  x:Name="MyMap" Background="Black"  Zoom="5" ShowTraffic="True" Margin="0,89,0,223"/>
-        <TextBox HorizontalAlignment="Left" Margin="54,45,0,0" TextWrapping="Wrap" Text="Post Code" VerticalAlignment="Top" Width="300" TextAlignment="Center" Foreground="Gray"/>
-        <ListView x:Name="searchList"   ItemTemplate="{StaticResource ImageTextListInboxTemplate}" ItemsSource="{Binding}"   VerticalAlignment="Stretch" HorizontalAlignment="Left" 
+            <!--MainPage -->
+            <Grid x:Name="MainFragment" Background="White">
+                <Image HorizontalAlignment="Left" Height="100" Margin="10,51,0,0" VerticalAlignment="Top" Width="100"/>
+
+                    <TextBox x:Name="txtPostCode" HorizontalAlignment="Left" Margin="95,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="224" TextAlignment="Center" Foreground="Gray" PlaceholderText="Post Code"/>
+                <ListView x:Name="searchList"   ItemTemplate="{StaticResource ImageTextListInboxTemplate}" ItemsSource="{Binding}"   VerticalAlignment="Stretch" HorizontalAlignment="Left" 
         CanReorderItems="True" CanDragItems="True"  Height="201" Margin="10,344,0,0"  Width="380" ScrollViewer.VerticalScrollBarVisibility="Visible" Foreground="#FF060606" Tapped="searchList_Tapped">
-                    
-                    
-        </ListView>
+
+
+                </ListView>
+                <Image x:Name="btnSearch" HorizontalAlignment="Left" Height="39" Margin="339,45,0,0" VerticalAlignment="Top" Width="42" Source="Assets/Search.png" Stretch="Fill" Tapped="btnSearch_Tapped"/>
 
 
 
-        </Grid>
-        <!--Favorites List Section -->
-        <Grid x:Name="ListFragment">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Border Grid.Row="0" Background="#5490CC">
+            </Grid>
+            <!--Favorites List Section -->
+            <Grid x:Name="ListFragment">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Background="#5490CC">
                     <TextBlock HorizontalAlignment="Center" Margin="0,5,0,5" Text="Menu" FontSize="25"/>
-        </Border>
-        <ListView Grid.Row="1" VerticalAlignment="Center" x:Name="ListMenuItems" SelectionChanged="ListMenuItems_SelectionChanged">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Background="White" Margin="0,0,0,1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0"   Text="{Binding}" Margin="10"  VerticalAlignment="Center" FontSize="18" Foreground="Black" />
-                        <Rectangle Grid.Row="1" HorizontalAlignment="Left" Fill="Gray" Width="500" Height="0.5"/>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                </Border>
+                <ListView Grid.Row="1" VerticalAlignment="Center" x:Name="ListMenuItems" SelectionChanged="ListMenuItems_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Background="White" Margin="0,0,0,1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0"   Text="{Binding}" Margin="10"  VerticalAlignment="Center" FontSize="18" Foreground="Black" />
+                                <Rectangle Grid.Row="1" HorizontalAlignment="Left" Fill="Gray" Width="500" Height="0.5"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
-        </Grid>
+            </Grid>
         </drawerLayout:DrawerLayout>
-        </Grid>
+    </Grid>
 
-        <Page.BottomAppBar>
+    <Page.BottomAppBar>
         <CommandBar>
-        <CommandBar.SecondaryCommands>
-        <AppBarButton Label="Go to London" Click="GoToLondonBtn_Clicked">
-            <AppBarButton.Icon>
-                <FontIcon Glyph="&#xE1C3;"/>
-            </AppBarButton.Icon>
-        </AppBarButton>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="Go to London" Click="GoToLondonBtn_Clicked">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE1C3;"/>
+                    </AppBarButton.Icon>
+                </AppBarButton>
 
-        <AppBarToggleButton Label="Toggle Traffic" >
-            <AppBarToggleButton.Icon>
-                <FontIcon Glyph="&#xE0C3;"/>
-            </AppBarToggleButton.Icon>
-        </AppBarToggleButton>
- 
+                <AppBarToggleButton Label="Toggle Traffic" >
+                    <AppBarToggleButton.Icon>
+                        <FontIcon Glyph="&#xE0C3;"/>
+                    </AppBarToggleButton.Icon>
+                </AppBarToggleButton>
 
-        <AppBarButton Label="Clear Map" >
-            <AppBarButton.Icon>
-                <FontIcon Glyph="&#xE107;"/>
-            </AppBarButton.Icon>
-        </AppBarButton>
-        </CommandBar.SecondaryCommands>
+
+                <AppBarButton Label="Clear Map" >
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE107;"/>
+                    </AppBarButton.Icon>
+                </AppBarButton>
+            </CommandBar.SecondaryCommands>
         </CommandBar>
-        </Page.BottomAppBar>
-        </Page>
+    </Page.BottomAppBar>
+</Page>
  

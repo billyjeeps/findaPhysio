@@ -52,7 +52,7 @@ namespace findaPhysio
                 if (selecteditem == "Search")
                 {
 
-                    DrawerLayout.CloseDrawer();
+             //       DrawerLayout.CloseDrawer();
                     Frame.Navigate(typeof(findaPhysioSearch));
                 }
                 if (selecteditem == "Contact")

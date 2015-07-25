@@ -21,6 +21,8 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
+
+
             <Image Margin="5"  x:Name="DrawerIcon"  Grid.Column="0" Source="/Assets/ic_drawer.png" HorizontalAlignment="Left" Tapped="DrawerIcon_Tapped" />
             <TextBlock Grid.Column="1" Text="findaPhysio - Physio Details" Foreground="White" VerticalAlignment="Center" FontSize="18"/>
         </Grid>
@@ -28,27 +30,30 @@
         <drawerLayout:DrawerLayout Grid.Row="1"  x:Name="DrawerLayout">
             <!--MainPage -->
             <Grid x:Name="MainFragment" Background="White">
+
                 <local:MapView  x:Name="MyMap" Background="Black"  Zoom="5" ShowTraffic="True" Margin="10,51,0,325" Loaded="MyMap_Loaded"/>
-                <TextBlock HorizontalAlignment="Left" Margin="16,281.833,0,0" FontSize="18" TextWrapping="Wrap" Text="Address" VerticalAlignment="Top" Width="85" Foreground="Black" Height="31" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-                    <TextBlock.RenderTransform>
-                        <CompositeTransform SkewX="4.332" TranslateX="1.174"/>
-                    </TextBlock.RenderTransform>
-                </TextBlock>
-                <TextBlock x:Name="txtAddress" HorizontalAlignment="Left" FontSize="18" Margin="116,282,0,0" TextWrapping="Wrap" Text="Address" VerticalAlignment="Top" Width="175" Foreground="Black" RenderTransformOrigin="2.554,0.897"/>
-                <TextBlock HorizontalAlignment="Left" Margin="16,257,0,0" FontSize="18" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" RenderTransformOrigin="0,0.256" Foreground="Black" IsTextSelectionEnabled="True"/>
-                <TextBlock x:Name="txtTelephone" HorizontalAlignment="Left" FontSize="18" Margin="116,331,0,0" TextWrapping="Wrap" Text="Telephone" VerticalAlignment="Top" Foreground="Black" Tapped="txtTelephone_Tapped" Width="143"/>
-                <TextBlock HorizontalAlignment="Left" Margin="16,331,0,0" FontSize="18" TextWrapping="Wrap" Text="Telephone" VerticalAlignment="Top" Foreground="Black"/>
-                <TextBlock HorizontalAlignment="Left" Margin="16,325,0,0" FontSize="18" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Foreground="Black"/>
-                <Button x:Name="btnBookNow" Content="Book Now" HorizontalAlignment="Left" Margin="108,427,0,0" VerticalAlignment="Top" Foreground="#FF589E5B" Background="#FF71C975" Tapped="btnBookNow_Tapped"/>
-                <TextBlock HorizontalAlignment="Left" Margin="16,304,0,0" FontSize="18" TextWrapping="Wrap" Text="Town" VerticalAlignment="Top" Foreground="Black"/>
-                <TextBlock x:Name="txtName" HorizontalAlignment="Left" Margin="116,257,0,0" FontSize="18" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" RenderTransformOrigin="0,0.256" Foreground="Black" IsTextSelectionEnabled="True"/>
-                <TextBlock x:Name="txtTown" HorizontalAlignment="Left" Margin="116,304,0,0" FontSize="18" TextWrapping="Wrap" Text="Town" VerticalAlignment="Top" Foreground="Black"/>
-                <TextBlock HorizontalAlignment="Left" Margin="16,358,0,0" FontSize="18" TextWrapping="Wrap" Text="Web" VerticalAlignment="Top" Foreground="Black"/>
-                <TextBlock x:Name="txtWeb" HorizontalAlignment="Left" FontSize="12" Margin="116,358,0,0" TextWrapping="Wrap" Text="Web" VerticalAlignment="Top" Foreground="Black" Tapped="txtTelephone_Tapped" Width="263" Height="22"/>
-                <TextBlock x:Name="lblsp" HorizontalAlignment="Left" Margin="16,385,0,0" FontSize="18" TextWrapping="Wrap" Text="Speciality" VerticalAlignment="Top" Foreground="Black"/>
-                <TextBlock x:Name="txttxtSpeciality" HorizontalAlignment="Left" FontSize="18" Margin="116,385,0,0" TextWrapping="Wrap" Text="Speciality" VerticalAlignment="Top" Foreground="Black" Tapped="txtTelephone_Tapped" Width="143"/>
 
+                <TextBlock HorizontalAlignment="Left"  Grid.Column="0" Grid.Row="0"  FontSize="18" TextWrapping="Wrap" Text="Town" VerticalAlignment="Top" Foreground="Black"/>
+                      <TextBlock HorizontalAlignment="Left" Margin="0,26.833,0,0" FontSize="18" TextWrapping="Wrap" Text="Address" VerticalAlignment="Top" Width="85" Foreground="Black" Height="31" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" d:LayoutOverrides="VerticalAlignment">
+                        <TextBlock.RenderTransform>
+                            <CompositeTransform SkewX="4.332" TranslateX="1.174"/>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
 
+                    <TextBlock x:Name="txtName" HorizontalAlignment="Left" FontSize="18" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" RenderTransformOrigin="0,0.256" Foreground="Black" IsTextSelectionEnabled="True" Margin="100,0,0,0"/>
+
+                    <TextBlock x:Name="txtAddress"  HorizontalAlignment="Left" FontSize="18" Margin="100,27,0,0" TextWrapping="Wrap" Text="Address" VerticalAlignment="Top" Width="175" Foreground="Black" RenderTransformOrigin="2.554,0.897" d:LayoutOverrides="VerticalAlignment"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="0,2,0,0" FontSize="18" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" RenderTransformOrigin="0,0.256" Foreground="Black" IsTextSelectionEnabled="True"/>
+                    <TextBlock x:Name="txtTelephone" HorizontalAlignment="Left" FontSize="18" Margin="100,76,0,0" TextWrapping="Wrap" Text="Telephone" VerticalAlignment="Top" Foreground="Black" Tapped="txtTelephone_Tapped" Width="143" d:LayoutOverrides="VerticalAlignment"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="0,76,0,0" FontSize="18" TextWrapping="Wrap" Text="Telephone" VerticalAlignment="Top" Foreground="Black" d:LayoutOverrides="VerticalAlignment"/>
+                    <Button x:Name="btnBookNow" Content="Book Now" HorizontalAlignment="Left" Margin="92,172,0,0" VerticalAlignment="Top" Foreground="#FF589E5B" Background="#FF71C975" Tapped="btnBookNow_Tapped"/>
+                    <TextBlock x:Name="txtTown" HorizontalAlignment="Left" Margin="100,49,0,0" FontSize="18" TextWrapping="Wrap" Text="Town" VerticalAlignment="Top" Foreground="Black" d:LayoutOverrides="VerticalAlignment"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="0,103,0,0" FontSize="18" TextWrapping="Wrap" Text="Web" VerticalAlignment="Top" Foreground="Black"/>
+                    <TextBlock x:Name="txtWeb" HorizontalAlignment="Left" FontSize="12" Margin="100,103,0,0" TextWrapping="Wrap" Text="Web" VerticalAlignment="Top" Foreground="Black" Tapped="txtTelephone_Tapped" Width="263" Height="22"/>
+                    <TextBlock x:Name="lblsp" HorizontalAlignment="Left" Margin="0,130,0,0" FontSize="18" TextWrapping="Wrap" Text="Speciality" VerticalAlignment="Top" Foreground="Black"/>
+                    <TextBlock x:Name="txttxtSpeciality" HorizontalAlignment="Left" FontSize="18" Margin="100,130,0,0" TextWrapping="Wrap" Text="Speciality" VerticalAlignment="Top" Foreground="Black" Tapped="txtTelephone_Tapped" Width="143"/>
+
+                   <TextBlock HorizontalAlignment="Left" Margin="16,325,0,0" FontSize="18" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Foreground="Black"/>
 
             </Grid>
             <!--Favorites List Section -->
