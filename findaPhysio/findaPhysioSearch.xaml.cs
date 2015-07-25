@@ -39,7 +39,7 @@ namespace findaPhysio
             string[] menuItems = new string[11] { "Home", "About Us", "Contact", "Search", "How FindaPhysio Works", "Physiotherapists", "Aritcle Of Week", "Blog Of Week", "Podcast Of Week", "Jobs", "Courses" }; ListMenuItems.ItemsSource = menuItems.ToList();  //Set Menu list  
 
 
-
+            
             _clinics.Add(new Clinics() { _id = "1", _WebSite = "www.Find-a-Physio.co.uk", _BookUrl = "http://www.find-a-physio.co.uk/Home/online-booking", _Name = "Physiotherapy at Home", _Latitude = 53.713442, _Longitude = -1.0747807, _Address1 = "The Cottage, Main St", _Town = "Selby", _Telephone = "07761 139883", _Speciaity = "Musculoskeletal", _Postcode = "YO8 8QT", _position = 1 });
             _clinics.Add(new Clinics() { _id = "2", _WebSite = "www.Find-a-Physio.co.uk", _BookUrl = "http://www.find-a-physio.co.uk/Home/online-booking", _Name = "Bodyworx Physio", _Latitude = 53.785101, _Longitude = -1.0670279, _Address1 = "Watendlath", _Telephone = "07783 881082", _Postcode = "YO8 4PH", _Speciaity = "Musculoskeletal", _position = 2 });
             _clinics.Add(new Clinics() { _id = "3", _WebSite = "www.Find-a-Physio.co.uk", _BookUrl = "http://www.find-a-physio.co.uk/Home/online-booking", _Name = "Rosemary Walmsley", _Latitude = 54.196454, _Longitude = -1.4338279, _Address1 = "80 York Rd", _Telephone = "01845 446410 ", _Postcode = "YO7 4SQ", _Speciaity = "Musculoskeletal", _position = 3 });
@@ -206,7 +206,7 @@ namespace findaPhysio
             Clinics myItem = searchList.SelectedItem as Clinics;
 
 
-      //      MyMap.SetView(new Windows.Devices.Geolocation.BasicGeoposition() { Latitude = myItem._Latitude, Longitude = myItem._Longitude }, 11);
+       MyMap.SetView(new Windows.Devices.Geolocation.BasicGeoposition() { Latitude = myItem._Latitude, Longitude = myItem._Longitude }, 11);
       
 
 

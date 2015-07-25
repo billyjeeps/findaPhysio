@@ -75,7 +75,9 @@
             <Grid x:Name="MainFragment" Background="White">
                 <Image HorizontalAlignment="Left" Height="100" Margin="10,51,0,0" VerticalAlignment="Top" Width="100"/>
 
-                    <TextBox x:Name="txtPostCode" HorizontalAlignment="Left" Margin="95,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="224" TextAlignment="Center" Foreground="Gray" PlaceholderText="Post Code"/>
+                <TextBox x:Name="txtPostCode" HorizontalAlignment="Left" Margin="95,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="224" TextAlignment="Center" Foreground="Gray" PlaceholderText="Post Code"/>
+
+                <local:MapView Height="200"  x:Name="MyMap" Margin="10,84,19,318"/>
                 <ListView x:Name="searchList"   ItemTemplate="{StaticResource ImageTextListInboxTemplate}" ItemsSource="{Binding}"   VerticalAlignment="Stretch" HorizontalAlignment="Left" 
         CanReorderItems="True" CanDragItems="True"  Height="201" Margin="10,344,0,0"  Width="380" ScrollViewer.VerticalScrollBarVisibility="Visible" Foreground="#FF060606" Tapped="searchList_Tapped">
 
