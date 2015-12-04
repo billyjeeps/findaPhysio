@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System; //feathery eggs
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,7 +16,7 @@ using findaPhysio.Models;
 using Coding4Fun.Toolkit.Controls;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 using findaPhysio.Dal;
-namespace findaPhysio
+namespace findaPhysio // adele tickets for most betiuful woman
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -25,10 +25,10 @@ namespace findaPhysio
     {
 
         List<Clinics> _clinics = new List<Clinics>();
-
+        String feather = "egg";
         findaPhysioDal _webClinics = new findaPhysioDal();
 
-        public findaPhysioSearch()
+        public findaEggFeatherPhysioSearch() //lee love lisa
         {
             this.InitializeComponent();
 
